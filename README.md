@@ -6,7 +6,7 @@
 Aravinthakshan A S · Aditya Prashant Naidu · Aadiv Rath<br>
 Manipal Institute of Technology, Manipal Academy of Higher Education
 
-**[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/42179)** · **[PDF](https://ojs.aaai.org/index.php/AAAI/article/download/42179/46140)** · **[DOI](https://doi.org/10.1609/aaai.v40i48.42179)** · **[Latest development branch](https://github.com/aravinthakshan/LaFINet/tree/aditya-branch2)**
+**[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/42179)** · **[PDF](https://ojs.aaai.org/index.php/AAAI/article/download/42179/46140)** · **[DOI](https://doi.org/10.1609/aaai.v40i48.42179)** · **[Latest development branch](https://github.com/aravinthakshan/LaFINet/tree/development/lafinet-experiments)**
 
 LaFINet studies how multiscale Laplacian details can help a lightweight network segment objects that blend into their surroundings. The published architecture combines Laplacian injection, frequency modulation, and feature fusion to recover object structure and boundaries.
 
@@ -28,7 +28,7 @@ LaFINet studies how multiscale Laplacian details can help a lightweight network 
 | --- | --- | --- | --- |
 | `main` | [`718ac5e`](https://github.com/aravinthakshan/LaFINet/commit/718ac5e) | 28 Nov 2025 | Earlier experimental implementation; SSFF/ASF calls are commented out and GOLD-style blocks are active. |
 | `aditya-branch` | [Branch history](https://github.com/aravinthakshan/LaFINet/commits/aditya-branch) | 7 Dec 2025 | Intermediate development. |
-| `aditya-branch2` | [`185a6f0`](https://github.com/aravinthakshan/LaFINet/commit/185a6f0) | 10 Jul 2026 | Most recent development: active scale fusion/attention, a model factory, additional backbones, and further architectural experiments. |
+| `development/lafinet-experiments` | [`185a6f0`](https://github.com/aravinthakshan/LaFINet/commit/185a6f0) | 10 Jul 2026 | Most recent development: active scale fusion/attention, a model factory, additional backbones, and further architectural experiments. |
 
 The newest branch also includes changes beyond the published architecture. **Neither snapshot is presented here as a verified reproduction of the paper.** A paper-specific commit, checkpoint, and pinned environment still need to be identified before claiming exact reproduction of the reported numbers.
 
@@ -66,7 +66,7 @@ The commands below match the CLI at `185a6f0`. They are starting points for expe
 ```bash
 git clone https://github.com/aravinthakshan/LaFINet.git
 cd LaFINet
-git switch aditya-branch2
+git switch development/lafinet-experiments
 # For the exact snapshot documented here:
 git checkout 185a6f0
 

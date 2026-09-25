@@ -6,7 +6,11 @@
 Aravinthakshan A S · Aditya Prashant Naidu · Aadiv Rath<br>
 Manipal Institute of Technology, Manipal Academy of Higher Education
 
-**[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/42179)** · **[PDF](https://ojs.aaai.org/index.php/AAAI/article/download/42179/46140)** · **[DOI](https://doi.org/10.1609/aaai.v40i48.42179)** · **[Latest development branch](https://github.com/aravinthakshan/LaFINet/tree/development/lafinet-experiments)**
+[![Paper: AAAI 2026](https://img.shields.io/badge/Paper-AAAI%202026-9acd32?style=flat-square)](https://ojs.aaai.org/index.php/AAAI/article/view/42179)
+[![Read the PDF](https://img.shields.io/badge/PDF-Read%20paper-b31b1b?style=flat-square)](https://ojs.aaai.org/index.php/AAAI/article/download/42179/46140)
+[![DOI: 10.1609/aaai.v40i48.42179](https://img.shields.io/badge/DOI-10.1609%2Faaai.v40i48.42179-2563eb?style=flat-square)](https://doi.org/10.1609/aaai.v40i48.42179)
+
+[Interactive article](https://aravinthakshan.com/blog/frequency-injection-for-camouflaged-objects) · [Latest development branch](https://github.com/aravinthakshan/LaFINet/tree/development/lafinet-experiments)
 
 LaFINet studies how multiscale Laplacian details can help a lightweight network segment objects that blend into their surroundings. The published architecture combines Laplacian injection, frequency modulation, and feature fusion to recover object structure and boundaries.
 
@@ -20,18 +24,6 @@ LaFINet studies how multiscale Laplacian details can help a lightweight network 
 2. **Inject and modulate:** Laplacian Injection Blocks (LIBs) combine these cues with EfficientNet-B0 features; FSIM modulates frequency information.
 3. **Fuse and decode:** LapDecoders, Scaled Sequence Feature Fusion (SSFF), and channel/position attention (CPAM) combine features for segmentation.
 
-## Which branch should I use?
-
-`main` is the default branch, but it is **not the newest model implementation**. The following code snapshots were reviewed on 25 September 2026:
-
-| Branch | Reviewed commit | Commit date | Context |
-| --- | --- | --- | --- |
-| `main` | [`718ac5e`](https://github.com/aravinthakshan/LaFINet/commit/718ac5e) | 28 Nov 2025 | Earlier experimental implementation; SSFF/ASF calls are commented out and GOLD-style blocks are active. |
-| `aditya-branch` | [Branch history](https://github.com/aravinthakshan/LaFINet/commits/aditya-branch) | 7 Dec 2025 | Intermediate development. |
-| `development/lafinet-experiments` | [`185a6f0`](https://github.com/aravinthakshan/LaFINet/commit/185a6f0) | 10 Jul 2026 | Most recent development: active scale fusion/attention, a model factory, additional backbones, and further architectural experiments. |
-
-The newest branch also includes changes beyond the published architecture. **Neither snapshot is presented here as a verified reproduction of the paper.** A paper-specific commit, checkpoint, and pinned environment still need to be identified before claiming exact reproduction of the reported numbers.
-
 ## Published results
 
 Transcribed from **Table 1** and the parameter-count paragraph in the paper. Higher metric values are better. Bold marks the best score among these methods, including ties. These numbers are published results, not measurements rerun against the current branch.
@@ -44,6 +36,96 @@ Transcribed from **Table 1** and the parameter-count paragraph in the paper. Hig
 | LaFINet | 4.48M | **0.892** | **0.940** | **0.829** | 0.845 | **0.906** | **0.772** |
 
 LaFINet improves all three CHAMELEON scores in this comparison. On NC4K, its structure score is slightly below FINet and SINetV2, while its E and weighted F scores are higher.
+
+### Reading the metrics
+
+| Metric | What it measures | Direction |
+| --- | --- | --- |
+| Sα | Structure measure: agreement in object and region structure | Higher is better |
+| Eφᵈ | Adaptive E-measure: alignment of the prediction and ground truth | Higher is better |
+| Fβʷ | Weighted F-measure: a spatially weighted precision–recall score | Higher is better |
+
+### Improvement over FINet
+
+Absolute score differences calculated from Table 1 (`LaFINet − FINet`). These are differences in metric units, not relative percentages.
+
+| Dataset | Δ Sα | Δ Eφᵈ | Δ Fβʷ |
+| --- | ---: | ---: | ---: |
+| CHAMELEON | +0.009 | +0.012 | +0.021 |
+| NC4K | −0.002 | +0.002 | +0.001 |
+
+### Model size
+
+LaFINet has **4.48 million parameters** in the published comparison. Calculated from the parameter counts reported alongside Table 1:
+
+| Compared with | Parameter difference | Relative difference |
+| --- | ---: | ---: |
+| SINetV2 (24.9M) | 20.42M fewer | 82.0% fewer |
+| TinyCOD (4.72M) | 0.24M fewer | 5.1% fewer |
+| FINet (3.74M) | 0.74M more | 19.8% more |
+
+## Experimental setup in the paper
+
+| Setting | Reported configuration |
+| --- | --- |
+| Encoder | EfficientNet-B0 |
+| Laplacian decomposition | Three levels |
+| Optimizer | Adam |
+| Training duration | 200 epochs |
+| Initial learning rate | 0.001 |
+| Learning-rate schedule | Cosine decay |
+| Training hardware | NVIDIA Tesla P100 |
+| Evaluation datasets in Table 1 | CHAMELEON and NC4K |
+
+Source: **Proposed Methodology** and **Experimental Setup and Results**, pages 41107–41108 of the [published paper](https://ojs.aaai.org/index.php/AAAI/article/download/42179/46140).
+
+## Qualitative results
+
+The four examples below reproduce the embedded images from **Figure 2**, in their original row order. White regions in the ground truth and prediction mark the foreground object. The last column is the paper’s first-level Laplacian output, which highlights image detail rather than a segmentation mask.
+
+<table>
+  <thead><tr><th>Input</th><th>Ground truth</th><th>LaFINet prediction</th><th>Laplacian level 1</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><img src="docs/qualitative/example-1-input.png" width="160" alt="Figure 2, example 1: input" /></td>
+      <td><img src="docs/qualitative/example-1-ground-truth.png" width="160" alt="Figure 2, example 1: ground truth" /></td>
+      <td><img src="docs/qualitative/example-1-prediction.jpg" width="160" alt="Figure 2, example 1: prediction" /></td>
+      <td><img src="docs/qualitative/example-1-laplacian.png" width="160" alt="Figure 2, example 1: laplacian" /></td>
+    </tr>
+    <tr>
+      <td><img src="docs/qualitative/example-2-input.png" width="160" alt="Figure 2, example 2: input" /></td>
+      <td><img src="docs/qualitative/example-2-ground-truth.png" width="160" alt="Figure 2, example 2: ground truth" /></td>
+      <td><img src="docs/qualitative/example-2-prediction.jpg" width="160" alt="Figure 2, example 2: prediction" /></td>
+      <td><img src="docs/qualitative/example-2-laplacian.png" width="160" alt="Figure 2, example 2: laplacian" /></td>
+    </tr>
+    <tr>
+      <td><img src="docs/qualitative/example-3-input.png" width="160" alt="Figure 2, example 3: input" /></td>
+      <td><img src="docs/qualitative/example-3-ground-truth.png" width="160" alt="Figure 2, example 3: ground truth" /></td>
+      <td><img src="docs/qualitative/example-3-prediction.jpg" width="160" alt="Figure 2, example 3: prediction" /></td>
+      <td><img src="docs/qualitative/example-3-laplacian.png" width="160" alt="Figure 2, example 3: laplacian" /></td>
+    </tr>
+    <tr>
+      <td><img src="docs/qualitative/example-4-input.png" width="160" alt="Figure 2, example 4: input" /></td>
+      <td><img src="docs/qualitative/example-4-ground-truth.png" width="160" alt="Figure 2, example 4: ground truth" /></td>
+      <td><img src="docs/qualitative/example-4-prediction.jpg" width="160" alt="Figure 2, example 4: prediction" /></td>
+      <td><img src="docs/qualitative/example-4-laplacian.png" width="160" alt="Figure 2, example 4: laplacian" /></td>
+    </tr>
+  </tbody>
+</table>
+
+*Figure 2, page 41108. Images were extracted from the published PDF without modification; display size is reduced here. Copyright © 2026 Association for the Advancement of Artificial Intelligence. [Asset provenance](docs/FIGURES.md).*
+
+## Which branch should I use?
+
+`main` is the default branch, but it is **not the newest model implementation**. The following code snapshots were reviewed on 25 September 2026:
+
+| Branch | Reviewed commit | Commit date | Context |
+| --- | --- | --- | --- |
+| `main` | [`718ac5e`](https://github.com/aravinthakshan/LaFINet/commit/718ac5e) | 28 Nov 2025 | Earlier experimental implementation; SSFF/ASF calls are commented out and GOLD-style blocks are active. |
+| `aditya-branch` | [Branch history](https://github.com/aravinthakshan/LaFINet/commits/aditya-branch) | 7 Dec 2025 | Intermediate development. |
+| `development/lafinet-experiments` | [`185a6f0`](https://github.com/aravinthakshan/LaFINet/commit/185a6f0) | 10 Jul 2026 | Most recent development: active scale fusion/attention, a model factory, additional backbones, and further architectural experiments. |
+
+The newest branch also includes changes beyond the published architecture. **Neither snapshot is presented here as a verified reproduction of the paper.** A paper-specific commit, checkpoint, and pinned environment still need to be identified before claiming exact reproduction of the reported numbers.
 
 ## Explore the code
 

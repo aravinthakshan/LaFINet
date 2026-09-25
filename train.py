@@ -133,8 +133,8 @@ if __name__ == '__main__':
     try:
         # from kaggle_secrets import UserSecretsClient
         # user_secrets = UserSecretsClient()
-        wandb_api_key = "4cdb0327752ba297aeb4f82dcc902d5f2e1d5eae"
-        wandb.login(key=wandb_api_key)
+        # Use WANDB_API_KEY from the environment or an existing W&B login.
+        wandb.login()
         print("Logged into wandb successfully.")
     except ImportError:
         print("Kaggle secrets not found. Please ensure you're in a Kaggle environment or log in manually.")

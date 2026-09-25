@@ -10,6 +10,8 @@ Manipal Institute of Technology, Manipal Academy of Higher Education
 [![Read the PDF](https://img.shields.io/badge/PDF-Read%20paper-b31b1b?style=flat-square)](https://ojs.aaai.org/index.php/AAAI/article/download/42179/46140)
 [![DOI: 10.1609/aaai.v40i48.42179](https://img.shields.io/badge/DOI-10.1609%2Faaai.v40i48.42179-2563eb?style=flat-square)](https://doi.org/10.1609/aaai.v40i48.42179)
 
+[![Supplementary PDF](https://img.shields.io/badge/Supplementary-PDF-555555?style=flat-square)](https://drive.google.com/file/d/1K-89sH9Gw9UyQN_rv5kt5w8gfdBmvyK3/view)
+
 [Interactive article](https://aravinthakshan.com/blog/frequency-injection-for-camouflaged-objects) · [Latest development branch](https://github.com/aravinthakshan/LaFINet/tree/development/lafinet-experiments)
 
 LaFINet studies how multiscale Laplacian details can help a lightweight network segment objects that blend into their surroundings. The published architecture combines Laplacian injection, frequency modulation, and feature fusion to recover object structure and boundaries.
@@ -63,6 +65,17 @@ LaFINet has **4.48 million parameters** in the published comparison. Calculated 
 | SINetV2 (24.9M) | 20.42M fewer | 82.0% fewer |
 | TinyCOD (4.72M) | 0.24M fewer | 5.1% fewer |
 | FINet (3.74M) | 0.74M more | 19.8% more |
+
+## Supplementary results across four datasets
+
+LaFINet rows from **Table 1 of the [supplementary material](https://drive.google.com/file/d/1K-89sH9Gw9UyQN_rv5kt5w8gfdBmvyK3/view)**. These extend the main paper’s two-dataset comparison with CAMO, COD10K, and mean absolute error (MAE; lower is better).
+
+| Dataset | Sα ↑ | Adaptive E ↑ | Weighted F ↑ | MAE ↓ |
+| --- | ---: | ---: | ---: | ---: |
+| CHAMELEON | 0.892 | 0.940 | 0.829 | 0.026 |
+| CAMO | 0.821 | 0.888 | 0.747 | 0.067 |
+| COD10K | 0.814 | 0.886 | 0.685 | 0.035 |
+| NC4K | 0.845 | 0.906 | 0.772 | 0.047 |
 
 ## Experimental setup in the paper
 

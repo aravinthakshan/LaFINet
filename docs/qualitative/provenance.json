@@ -1,0 +1,114 @@
+[
+  {
+    "file": "docs/qualitative/example-1-input.png",
+    "figure": 2,
+    "row": 1,
+    "column": 1,
+    "sha256": "c085ddcb6f5f29b3887aaf3ef0f62bd5c7bab069713ba19bf26e751ed83c00cd"
+  },
+  {
+    "file": "docs/qualitative/example-1-ground-truth.png",
+    "figure": 2,
+    "row": 1,
+    "column": 2,
+    "sha256": "df25bd417f70efecd67004140c4b06bf4641a19ede918d31ebe646a7ebcba424"
+  },
+  {
+    "file": "docs/qualitative/example-1-prediction.jpg",
+    "figure": 2,
+    "row": 1,
+    "column": 3,
+    "sha256": "955df22ea6e6c0ae38263700a51c6adb3fb41c0024d5c36b847c2c870350bccb"
+  },
+  {
+    "file": "docs/qualitative/example-1-laplacian.png",
+    "figure": 2,
+    "row": 1,
+    "column": 4,
+    "sha256": "c96cad128cab8917f3fd8ff3fa7bfc5bf33fd3e69fd86d57a905e1a3eb313246"
+  },
+  {
+    "file": "docs/qualitative/example-2-input.png",
+    "figure": 2,
+    "row": 2,
+    "column": 1,
+    "sha256": "c978f156d6b7fbc61f27b54026796bfa1579ae19c852afe90af4d99f889070f0"
+  },
+  {
+    "file": "docs/qualitative/example-2-ground-truth.png",
+    "figure": 2,
+    "row": 2,
+    "column": 2,
+    "sha256": "53c8130c51a11de6ec45d9f7551d4b25deb898aa13ea95d83042a8bc8e26a28a"
+  },
+  {
+    "file": "docs/qualitative/example-2-prediction.jpg",
+    "figure": 2,
+    "row": 2,
+    "column": 3,
+    "sha256": "4d938389a867ae60934f4d41731fc50f402502507b3203ca3323da20217992a7"
+  },
+  {
+    "file": "docs/qualitative/example-2-laplacian.png",
+    "figure": 2,
+    "row": 2,
+    "column": 4,
+    "sha256": "22143c405847c9c6cb1343e6a0583ea76df07c237fd3468c6cd12c59256071be"
+  },
+  {
+    "file": "docs/qualitative/example-3-input.png",
+    "figure": 2,
+    "row": 3,
+    "column": 1,
+    "sha256": "6f18497144542aa791f79a73b3e4d14307e14c950ad56831ce0fdceb52de97b8"
+  },
+  {
+    "file": "docs/qualitative/example-3-ground-truth.png",
+    "figure": 2,
+    "row": 3,
+    "column": 2,
+    "sha256": "8be2796f52033878af7bbf2de3ba3a031e460ef4d76b6027969773e839f1f210"
+  },
+  {
+    "file": "docs/qualitative/example-3-prediction.jpg",
+    "figure": 2,
+    "row": 3,
+    "column": 3,
+    "sha256": "a62e0714bd9674f974067fce59f2194bdc4e64245ca29ce191412c18edf08444"
+  },
+  {
+    "file": "docs/qualitative/example-3-laplacian.png",
+    "figure": 2,
+    "row": 3,
+    "column": 4,
+    "sha256": "cb7211eae1a0b3a79dfddcdbb0a30a099623f6823889214688695d13a127a31d"
+  },
+  {
+    "file": "docs/qualitative/example-4-input.png",
+    "figure": 2,
+    "row": 4,
+    "column": 1,
+    "sha256": "5526376d410135379759a7561ca498f3a77a53905c00b84d54e7c56bb2963895"
+  },
+  {
+    "file": "docs/qualitative/example-4-ground-truth.png",
+    "figure": 2,
+    "row": 4,
+    "column": 2,
+    "sha256": "1acee2853e8307c4be45c90a97d7ebe6eb8177006fcb6915b357a8a353a0041a"
+  },
+  {
+    "file": "docs/qualitative/example-4-prediction.jpg",
+    "figure": 2,
+    "row": 4,
+    "column": 3,
+    "sha256": "4961c701d455a4e8829e37024643dbf6573c52c6113b34c8ecff03ba21284b5d"
+  },
+  {
+    "file": "docs/qualitative/example-4-laplacian.png",
+    "figure": 2,
+    "row": 4,
+    "column": 4,
+    "sha256": "7b951577d82eb56f7de98617adc31edaf37b98f970034270294dac0bfbac4009"
+  }
+]
